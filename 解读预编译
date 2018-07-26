@@ -1,0 +1,73 @@
+   <h3>解读预编译</h3><p> <strong>预编译发生在函数执行的前一刻</strong></p>
+     <ul><li>JavaScript在执行的过程分为三个步骤 :
+       <ol>
+         <li>语法分析，找出低级错误</li>
+       <li>预编译（函数声明整体提升，变量声明提升）</li>
+       <li>解释执行</li></ol>       
+      <p>预编译的过程是在内存中开辟一些空间，存放一些变量与函数，系统自动将函数的声明提到最前，而对于变量只将声明提前，对赋值操作不做处理（如果变量声明赋值为一步的话则将生命和赋值拆开 </p></li>
+   <p>imply global指暗示全局变量：即任何变量如果未经声明就赋值，此变量即为全局对象所有，一切声明的全局变量都是window的属性,window是全局的域<code><pre>var a = 123; → window.a=123; </pre></code></p>
+    <h4>预编译四部曲</h4>
+<ol>
+    <li> 创建AO对象（<em>Activation Object</em>执行期上下文）</li> 
+    <li> 找形参和变量声明，将变量和形参名作为AO属性名，值初始化为undefined; </li>
+    <li> 将形参值和实参值相统一，用实参值代替掉3中的形参值；</li> 
+    <li> 在函数里找函数声明，值赋予函数体。</li>
+</ol>
+       <code><pre> function test()
+        {
+            console.log(a);     //function a(){}
+            console.log(b);     //undefined
+            var b = 234;
+            console.log(b);     //234
+            a = 123;
+            console.log(a);     //123
+            function a(){}
+            var a;
+            b = 234;
+            var b = function(){}
+            console.log(a);     //123
+            console.log(b);     //f(){}
+        }       
+        test(1);</pre></code>
+       <p>存在全局变量时预编译过程变化不大</p>
+<ol><li> 创建GO对象（<em>GO(Golobal Objective)</em>）</li> 
+    <li> 找形参变量声明</li> 
+    <li> 在函数里找函数声明，值给函数名。</li>
+</ol>
+       <code><pre>
+            console.log(bar());    //11
+            function bar()
+        {
+            foo=10;
+            function foo(){
+            }
+            var foo = 11;
+            return foo;
+        }
+            a = 100;
+            function demo(e){
+            function e(){}
+            arguments[0]=2;
+            document.write(e)     //2
+            if(a){
+                var b=123;
+                function c(){
+
+                }
+            }
+            var c;
+            a = 10;
+            var a;
+            document.write(b)     //undefind
+            f = 123;
+            document.write(c);    //undefined
+            document.write(a);    //10
+        }
+            var a;
+            demo(1);
+            document.write(a);    //100
+            document.write(f);    //123
+        </pre><code>
+       
+       
+      
