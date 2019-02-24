@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		header{
+			height:40px;
+			background-color: #b5c4b1;
+			line-height:40px;
+			text-align: center;		
+			clear: both;	
+			}
+		.container{
+			text-align: center;
+			}
+		.middle{
+			background-color:#f8ebd8;
+			width:100%;
+			}
+		.left{
+			width:200px;
+			background-color: #ead0d1;
+			margin-left:-100%;
+		
+			}
+		.right{
+			width:200px;
+			background-color:#9ca8b8;
+			margin-left: -200px;
+	
+			}
+		.middle,.left,.right{
+			float: left;
+			min-height: 300px;
+		}
+		</style>
+</head>
+<body>
+	<header>
+		<h2>我是边框</h2>
+	</header>
+	<div class="container">
+		<div class="middle">
+			<h4>我是middle</h4>
+			<p>我是内容部分</p>
+		</div>
+		<div class="left">
+			<h4>我是left</h4>
+			<p>我是left的内容</p>
+		</div>
+		<div class="right">
+			<h4>我是right的内容</h4>
+			<p>我是right的内容</p>
+		</div>
+	  </div>
+	  <header>
+			<h2>我是边框</h2>
+		</header>
+</body>
+</html>
